@@ -3007,10 +3007,43 @@ var IndexPage = function IndexPage(props) {
       setFilms = _useState[1];
 
   console.log(films);
+  Object(react__WEBPACK_IMPORTED_MODULE_2__["useEffect"])(function () {
+    var favs = JSON.parse(localStorage.getItem("favs"));
+
+    if (favs) {
+      var list = films.map(function (film) {
+        if (favs.indexOf(film.episode_id) > 0) {
+          __jsx("li", {
+            key: film.episode_id,
+            className: "fav",
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 14
+            },
+            __self: this
+          }, film.title, " - unFav");
+        } else {
+          __jsx("li", {
+            key: film.episode_id,
+            className: "nonfav",
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 18
+            },
+            __self: this
+          }, film.title, " - Fav");
+        }
+      });
+      return list;
+    }
+
+    console.log("useEffect run");
+    setFilms([films[1]]);
+  }, []);
   return __jsx("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 10
+      lineNumber: 30
     },
     __self: this
   }, __jsx(_components_search__WEBPACK_IMPORTED_MODULE_4__["default"], {
@@ -3019,19 +3052,19 @@ var IndexPage = function IndexPage(props) {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 11
+      lineNumber: 31
     },
     __self: this
   }), __jsx("h1", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 12
+      lineNumber: 32
     },
     __self: this
   }, "Star Wars Films"), __jsx("ul", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 13
+      lineNumber: 33
     },
     __self: this
   }, films.map(function (film) {
@@ -3039,10 +3072,10 @@ var IndexPage = function IndexPage(props) {
       key: film.episode_id,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 15
+        lineNumber: 35
       },
       __self: this
-    }, film.title);
+    }, film.title, " - Fav");
   })));
 };
 

@@ -186,39 +186,72 @@ const IndexPage = props => {
     1: setFilms
   } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(props[0]);
   console.log(films);
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+    const favs = JSON.parse(localStorage.getItem("favs"));
+
+    if (favs) {
+      const list = films.map(film => {
+        if (favs.indexOf(film.episode_id) > 0) {
+          __jsx("li", {
+            key: film.episode_id,
+            className: "fav",
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 14
+            },
+            __self: undefined
+          }, film.title, " - unFav");
+        } else {
+          __jsx("li", {
+            key: film.episode_id,
+            className: "nonfav",
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 18
+            },
+            __self: undefined
+          }, film.title, " - Fav");
+        }
+      });
+      return list;
+    }
+
+    console.log("useEffect run");
+    setFilms([films[1]]);
+  }, []);
   return __jsx("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 10
+      lineNumber: 30
     },
     __self: undefined
   }, __jsx(_components_search__WEBPACK_IMPORTED_MODULE_2__["default"], {
     handleSearch: filmList => setFilms(filmList),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 11
+      lineNumber: 31
     },
     __self: undefined
   }), __jsx("h1", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 12
+      lineNumber: 32
     },
     __self: undefined
   }, "Star Wars Films"), __jsx("ul", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 13
+      lineNumber: 33
     },
     __self: undefined
   }, films.map(film => __jsx("li", {
     key: film.episode_id,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 15
+      lineNumber: 35
     },
     __self: undefined
-  }, film.title))));
+  }, film.title, " - Fav"))));
 };
 
 IndexPage.getInitialProps = async () => {
