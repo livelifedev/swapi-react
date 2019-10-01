@@ -1,14 +1,21 @@
 import React, { useState } from "react";
 import fetch from "isomorphic-unfetch";
+import Search from "../components/search";
 
 const IndexPage = props => {
-  const [films] = useState(props[0]);
+  const [state, setState] = useState("");
+  const [films, setFilms] = useState(props[0]);
   console.log(films);
 
   return (
     <div>
-      <h1>The Main Page</h1>
-      {/* <h1>{}</h1> */}
+      <Search handleSearch={() => setFilms("")} />
+      <h1>Star Wars Films</h1>
+      <ul>
+        {films.map(film => (
+          <li key={film.episode_id}>{film.title}</li>
+        ))}
+      </ul>
     </div>
   );
 };
@@ -18,7 +25,7 @@ IndexPage.getInitialProps = async () => {
   const res = await fetch(url);
   const data = await res.json();
 
-  console.log(data);
+  console.log("run");
 
   return [data.results];
 };

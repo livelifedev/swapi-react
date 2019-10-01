@@ -1,5 +1,65 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static/development/pages/index.js"],{
 
+/***/ "./components/search.js":
+/*!******************************!*\
+  !*** ./components/search.js ***!
+  \******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+var _jsxFileName = "/Users/johnrubio/github_projects/swapi-react/components/search.js";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+var Search = function Search(_ref) {
+  var films = _ref.films,
+      handleSearch = _ref.handleSearch;
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
+      state = _useState[0],
+      setState = _useState[1];
+
+  return __jsx("form", {
+    onSubmit: function onSubmit(e) {
+      console.log("search", state);
+      e.preventDefault(); // api request?();
+    },
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 7
+    },
+    __self: this
+  }, __jsx("input", {
+    type: "text",
+    name: "search-bar",
+    id: "search-bar",
+    placeholder: "Search films...",
+    value: state,
+    onChange: function onChange(e) {
+      return setState(e.target.value);
+    },
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 14
+    },
+    __self: this
+  }), __jsx("button", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 22
+    },
+    __self: this
+  }, "Search"));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Search);
+
+/***/ }),
+
 /***/ "./node_modules/@babel/runtime-corejs2/core-js/promise.js":
 /*!****************************************************************!*\
   !*** ./node_modules/@babel/runtime-corejs2/core-js/promise.js ***!
@@ -2889,6 +2949,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! isomorphic-unfetch */ "./node_modules/isomorphic-unfetch/browser.js");
 /* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _components_search__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/search */ "./components/search.js");
 
 
 var _jsxFileName = "/Users/johnrubio/github_projects/swapi-react/pages/index.js";
@@ -2896,24 +2957,54 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement;
 
 
 
+
 var IndexPage = function IndexPage(props) {
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_2__["useState"])(props[0]),
-      films = _useState[0];
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_2__["useState"])(""),
+      state = _useState[0],
+      setState = _useState[1];
+
+  var _useState2 = Object(react__WEBPACK_IMPORTED_MODULE_2__["useState"])(props[0]),
+      films = _useState2[0],
+      setFilms = _useState2[1];
 
   console.log(films);
   return __jsx("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 9
+      lineNumber: 11
     },
     __self: this
-  }, __jsx("h1", {
+  }, __jsx(_components_search__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    handleSearch: function handleSearch() {
+      return setFilms("");
+    },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 10
+      lineNumber: 12
     },
     __self: this
-  }, "The Main Page"));
+  }), __jsx("h1", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 13
+    },
+    __self: this
+  }, "Star Wars Films"), __jsx("ul", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 14
+    },
+    __self: this
+  }, films.map(function (film) {
+    return __jsx("li", {
+      key: film.episode_id,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 16
+      },
+      __self: this
+    }, film.title);
+  })));
 };
 
 IndexPage.getInitialProps =
@@ -2937,7 +3028,7 @@ _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(f
 
         case 6:
           data = _context.sent;
-          console.log(data);
+          console.log("run");
           return _context.abrupt("return", [data.results]);
 
         case 9:

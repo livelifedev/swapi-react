@@ -93,6 +93,64 @@ module.exports =
 /************************************************************************/
 /******/ ({
 
+/***/ "./components/search.js":
+/*!******************************!*\
+  !*** ./components/search.js ***!
+  \******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+var _jsxFileName = "/Users/johnrubio/github_projects/swapi-react/components/search.js";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+const Search = ({
+  films,
+  handleSearch
+}) => {
+  const {
+    0: state,
+    1: setState
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])("");
+  return __jsx("form", {
+    onSubmit: e => {
+      console.log("search", state);
+      e.preventDefault(); // api request?();
+    },
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 7
+    },
+    __self: undefined
+  }, __jsx("input", {
+    type: "text",
+    name: "search-bar",
+    id: "search-bar",
+    placeholder: "Search films...",
+    value: state,
+    onChange: e => setState(e.target.value),
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 14
+    },
+    __self: undefined
+  }), __jsx("button", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 22
+    },
+    __self: undefined
+  }, "Search"));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Search);
+
+/***/ }),
+
 /***/ "./pages/index.js":
 /*!************************!*\
   !*** ./pages/index.js ***!
@@ -106,36 +164,63 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! isomorphic-unfetch */ "isomorphic-unfetch");
 /* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components_search__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/search */ "./components/search.js");
 var _jsxFileName = "/Users/johnrubio/github_projects/swapi-react/pages/index.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
+
 const IndexPage = props => {
   const {
-    0: films
+    0: state,
+    1: setState
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])("");
+  const {
+    0: films,
+    1: setFilms
   } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(props[0]);
   console.log(films);
   return __jsx("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 9
+      lineNumber: 11
     },
     __self: undefined
-  }, __jsx("h1", {
+  }, __jsx(_components_search__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    handleSearch: () => setFilms(""),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 10
+      lineNumber: 12
     },
     __self: undefined
-  }, "The Main Page"));
+  }), __jsx("h1", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 13
+    },
+    __self: undefined
+  }, "Star Wars Films"), __jsx("ul", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 14
+    },
+    __self: undefined
+  }, films.map(film => __jsx("li", {
+    key: film.episode_id,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 16
+    },
+    __self: undefined
+  }, film.title))));
 };
 
 IndexPage.getInitialProps = async () => {
   const url = "https://swapi.co/api/films/";
   const res = await isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_1___default()(url);
   const data = await res.json();
-  console.log(data);
+  console.log("run");
   return [data.results];
 };
 
