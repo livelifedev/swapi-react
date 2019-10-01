@@ -1,5 +1,92 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static/development/pages/index.js"],{
 
+/***/ "./components/list.js":
+/*!****************************!*\
+  !*** ./components/list.js ***!
+  \****************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/json/stringify */ "./node_modules/@babel/runtime-corejs2/core-js/json/stringify.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+
+var _jsxFileName = "/Users/johnrubio/github_projects/swapi-react/components/list.js";
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
+
+var favClick = function favClick(id) {
+  var storedFavs = JSON.parse(localStorage.getItem("favs")) || [];
+  storedFavs.push(id);
+  localStorage.setItem("favs", _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0___default()(storedFavs));
+  alert("favourited");
+};
+
+var unFavClick = function unFavClick(id) {
+  var storedFavs = JSON.parse(localStorage.getItem("favs")) || [];
+  var index = storedFavs.indexOf(id);
+  storedFavs.splice(index, 1);
+  localStorage.setItem("favs", _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0___default()(storedFavs));
+  alert("unfavourited");
+};
+
+var List = function List(_ref) {
+  var films = _ref.films,
+      favs = _ref.favs,
+      handleClick = _ref.handleClick;
+  var list = films.map(function (film) {
+    if (favs.indexOf(film.episode_id) >= 0) {
+      return __jsx("li", {
+        key: film.episode_id,
+        className: "fav",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 20
+        },
+        __self: this
+      }, film.title, " -", " ", __jsx("button", {
+        onClick: function onClick() {
+          unFavClick(film.episode_id);
+          handleClick();
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 22
+        },
+        __self: this
+      }, "unFav"));
+    } else {
+      return __jsx("li", {
+        key: film.episode_id,
+        className: "nonfav",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 34
+        },
+        __self: this
+      }, film.title, " -", " ", __jsx("button", {
+        onClick: function onClick() {
+          favClick(film.episode_id);
+          handleClick();
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 36
+        },
+        __self: this
+      }, "Fav"));
+    }
+  });
+  return list;
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (List);
+
+/***/ }),
+
 /***/ "./components/search.js":
 /*!******************************!*\
   !*** ./components/search.js ***!
@@ -103,6 +190,17 @@ var Search = function Search(_ref) {
 
 /***/ }),
 
+/***/ "./node_modules/@babel/runtime-corejs2/core-js/json/stringify.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/@babel/runtime-corejs2/core-js/json/stringify.js ***!
+  \***********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! core-js/library/fn/json/stringify */ "./node_modules/core-js/library/fn/json/stringify.js");
+
+/***/ }),
+
 /***/ "./node_modules/@babel/runtime-corejs2/core-js/promise.js":
 /*!****************************************************************!*\
   !*** ./node_modules/@babel/runtime-corejs2/core-js/promise.js ***!
@@ -174,6 +272,22 @@ function _asyncToGenerator(fn) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(/*! regenerator-runtime */ "./node_modules/regenerator-runtime/runtime.js");
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/library/fn/json/stringify.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/core-js/library/fn/json/stringify.js ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var core = __webpack_require__(/*! ../../modules/_core */ "./node_modules/core-js/library/modules/_core.js");
+var $JSON = core.JSON || (core.JSON = { stringify: JSON.stringify });
+module.exports = function stringify(it) { // eslint-disable-line no-unused-vars
+  return $JSON.stringify.apply($JSON, arguments);
+};
 
 
 /***/ }),
@@ -2993,10 +3107,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! isomorphic-unfetch */ "./node_modules/isomorphic-unfetch/browser.js");
 /* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _components_search__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/search */ "./components/search.js");
+/* harmony import */ var _components_list__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/list */ "./components/list.js");
 
 
 var _jsxFileName = "/Users/johnrubio/github_projects/swapi-react/pages/index.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement;
+
 
 
 
@@ -3006,44 +3122,23 @@ var IndexPage = function IndexPage(props) {
       films = _useState[0],
       setFilms = _useState[1];
 
-  console.log(films);
+  var _useState2 = Object(react__WEBPACK_IMPORTED_MODULE_2__["useState"])([]),
+      favs = _useState2[0],
+      setFavs = _useState2[1];
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_2__["useState"])(false),
+      toggle = _useState3[0],
+      setToggle = _useState3[1];
+
   Object(react__WEBPACK_IMPORTED_MODULE_2__["useEffect"])(function () {
-    var favs = JSON.parse(localStorage.getItem("favs"));
-
-    if (favs) {
-      var list = films.map(function (film) {
-        if (favs.indexOf(film.episode_id) > 0) {
-          __jsx("li", {
-            key: film.episode_id,
-            className: "fav",
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 14
-            },
-            __self: this
-          }, film.title, " - unFav");
-        } else {
-          __jsx("li", {
-            key: film.episode_id,
-            className: "nonfav",
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 18
-            },
-            __self: this
-          }, film.title, " - Fav");
-        }
-      });
-      return list;
-    }
-
+    var storedFavs = JSON.parse(localStorage.getItem("favs"));
+    setFavs(storedFavs || []);
     console.log("useEffect run");
-    setFilms([films[1]]);
-  }, []);
+  }, [toggle]);
   return __jsx("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 30
+      lineNumber: 19
     },
     __self: this
   }, __jsx(_components_search__WEBPACK_IMPORTED_MODULE_4__["default"], {
@@ -3052,30 +3147,32 @@ var IndexPage = function IndexPage(props) {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 31
+      lineNumber: 20
     },
     __self: this
   }), __jsx("h1", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 32
+      lineNumber: 21
     },
     __self: this
   }, "Star Wars Films"), __jsx("ul", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 33
+      lineNumber: 22
     },
     __self: this
-  }, films.map(function (film) {
-    return __jsx("li", {
-      key: film.episode_id,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 35
-      },
-      __self: this
-    }, film.title, " - Fav");
+  }, __jsx(_components_list__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    films: films,
+    favs: favs,
+    handleClick: function handleClick() {
+      return setToggle(!toggle);
+    },
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 23
+    },
+    __self: this
   })));
 };
 
@@ -3100,10 +3197,9 @@ _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(f
 
         case 6:
           data = _context.sent;
-          console.log("run");
           return _context.abrupt("return", [data.results]);
 
-        case 9:
+        case 8:
         case "end":
           return _context.stop();
       }

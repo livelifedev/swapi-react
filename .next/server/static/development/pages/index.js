@@ -93,6 +93,94 @@ module.exports =
 /************************************************************************/
 /******/ ({
 
+/***/ "./components/list.js":
+/*!****************************!*\
+  !*** ./components/list.js ***!
+  \****************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/json/stringify */ "./node_modules/@babel/runtime-corejs2/core-js/json/stringify.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+
+var _jsxFileName = "/Users/johnrubio/github_projects/swapi-react/components/list.js";
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
+
+const favClick = id => {
+  const storedFavs = JSON.parse(localStorage.getItem("favs")) || [];
+  storedFavs.push(id);
+  localStorage.setItem("favs", _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0___default()(storedFavs));
+  alert("favourited");
+};
+
+const unFavClick = id => {
+  const storedFavs = JSON.parse(localStorage.getItem("favs")) || [];
+  const index = storedFavs.indexOf(id);
+  storedFavs.splice(index, 1);
+  localStorage.setItem("favs", _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0___default()(storedFavs));
+  alert("unfavourited");
+};
+
+const List = ({
+  films,
+  favs,
+  handleClick
+}) => {
+  const list = films.map(film => {
+    if (favs.indexOf(film.episode_id) >= 0) {
+      return __jsx("li", {
+        key: film.episode_id,
+        className: "fav",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 20
+        },
+        __self: undefined
+      }, film.title, " -", " ", __jsx("button", {
+        onClick: () => {
+          unFavClick(film.episode_id);
+          handleClick();
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 22
+        },
+        __self: undefined
+      }, "unFav"));
+    } else {
+      return __jsx("li", {
+        key: film.episode_id,
+        className: "nonfav",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 34
+        },
+        __self: undefined
+      }, film.title, " -", " ", __jsx("button", {
+        onClick: () => {
+          favClick(film.episode_id);
+          handleClick();
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 36
+        },
+        __self: undefined
+      }, "Fav"));
+    }
+  });
+  return list;
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (List);
+
+/***/ }),
+
 /***/ "./components/search.js":
 /*!******************************!*\
   !*** ./components/search.js ***!
@@ -160,6 +248,17 @@ const Search = ({
 
 /***/ }),
 
+/***/ "./node_modules/@babel/runtime-corejs2/core-js/json/stringify.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/@babel/runtime-corejs2/core-js/json/stringify.js ***!
+  \***********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! core-js/library/fn/json/stringify */ "core-js/library/fn/json/stringify");
+
+/***/ }),
+
 /***/ "./pages/index.js":
 /*!************************!*\
   !*** ./pages/index.js ***!
@@ -174,8 +273,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! isomorphic-unfetch */ "isomorphic-unfetch");
 /* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _components_search__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/search */ "./components/search.js");
+/* harmony import */ var _components_list__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/list */ "./components/list.js");
 var _jsxFileName = "/Users/johnrubio/github_projects/swapi-react/pages/index.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
 
 
 
@@ -185,80 +286,60 @@ const IndexPage = props => {
     0: films,
     1: setFilms
   } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(props[0]);
-  console.log(films);
+  const {
+    0: favs,
+    1: setFavs
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]);
+  const {
+    0: toggle,
+    1: setToggle
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false);
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
-    const favs = JSON.parse(localStorage.getItem("favs"));
-
-    if (favs) {
-      const list = films.map(film => {
-        if (favs.indexOf(film.episode_id) > 0) {
-          __jsx("li", {
-            key: film.episode_id,
-            className: "fav",
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 14
-            },
-            __self: undefined
-          }, film.title, " - unFav");
-        } else {
-          __jsx("li", {
-            key: film.episode_id,
-            className: "nonfav",
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 18
-            },
-            __self: undefined
-          }, film.title, " - Fav");
-        }
-      });
-      return list;
-    }
-
+    const storedFavs = JSON.parse(localStorage.getItem("favs"));
+    setFavs(storedFavs || []);
     console.log("useEffect run");
-    setFilms([films[1]]);
-  }, []);
+  }, [toggle]);
   return __jsx("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 30
+      lineNumber: 19
     },
     __self: undefined
   }, __jsx(_components_search__WEBPACK_IMPORTED_MODULE_2__["default"], {
     handleSearch: filmList => setFilms(filmList),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 31
+      lineNumber: 20
     },
     __self: undefined
   }), __jsx("h1", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 32
+      lineNumber: 21
     },
     __self: undefined
   }, "Star Wars Films"), __jsx("ul", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 33
+      lineNumber: 22
     },
     __self: undefined
-  }, films.map(film => __jsx("li", {
-    key: film.episode_id,
+  }, __jsx(_components_list__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    films: films,
+    favs: favs,
+    handleClick: () => setToggle(!toggle),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35
+      lineNumber: 23
     },
     __self: undefined
-  }, film.title, " - Fav"))));
+  })));
 };
 
 IndexPage.getInitialProps = async () => {
   const url = "https://swapi.co/api/films/";
   const res = await isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_1___default()(url);
   const data = await res.json();
-  console.log("run");
   return [data.results];
 };
 
@@ -275,6 +356,17 @@ IndexPage.getInitialProps = async () => {
 
 module.exports = __webpack_require__(/*! /Users/johnrubio/github_projects/swapi-react/pages/index.js */"./pages/index.js");
 
+
+/***/ }),
+
+/***/ "core-js/library/fn/json/stringify":
+/*!****************************************************!*\
+  !*** external "core-js/library/fn/json/stringify" ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("core-js/library/fn/json/stringify");
 
 /***/ }),
 
