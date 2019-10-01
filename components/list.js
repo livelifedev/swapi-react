@@ -2,7 +2,6 @@ const favClick = id => {
   const storedFavs = JSON.parse(localStorage.getItem("favs")) || [];
   storedFavs.push(id);
   localStorage.setItem("favs", JSON.stringify(storedFavs));
-  alert("favourited");
 };
 
 const unFavClick = id => {
@@ -10,10 +9,9 @@ const unFavClick = id => {
   const index = storedFavs.indexOf(id);
   storedFavs.splice(index, 1);
   localStorage.setItem("favs", JSON.stringify(storedFavs));
-  alert("unfavourited");
 };
 
-const List = ({ films, favs, handleClick }) => {
+const List = ({ films, favs, handleClick, showAlert }) => {
   const list = films.map(film => {
     if (favs.indexOf(film.episode_id) >= 0) {
       return (
@@ -36,6 +34,7 @@ const List = ({ films, favs, handleClick }) => {
           <button
             onClick={() => {
               favClick(film.episode_id);
+              showAlert();
               handleClick();
             }}
           >

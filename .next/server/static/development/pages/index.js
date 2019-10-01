@@ -93,6 +93,60 @@ module.exports =
 /************************************************************************/
 /******/ ({
 
+/***/ "./components/alert.js":
+/*!*****************************!*\
+  !*** ./components/alert.js ***!
+  \*****************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var styled_jsx_style__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-jsx/style */ "styled-jsx/style");
+/* harmony import */ var styled_jsx_style__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(styled_jsx_style__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+var _jsxFileName = "/Users/johnrubio/github_projects/swapi-react/components/alert.js";
+
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
+
+const Alert = ({
+  showAlert,
+  handleClose
+}) => {
+  return showAlert ? __jsx("div", {
+    className: "jsx-4068950051" + " " + "alert",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 3
+    },
+    __self: undefined
+  }, __jsx("div", {
+    onClick: handleClose,
+    className: "jsx-4068950051",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 4
+    },
+    __self: undefined
+  }, __jsx("p", {
+    className: "jsx-4068950051",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 5
+    },
+    __self: undefined
+  }, "This film in now Favourited")), __jsx(styled_jsx_style__WEBPACK_IMPORTED_MODULE_0___default.a, {
+    id: "4068950051",
+    __self: undefined
+  }, ".jsx-4068950051{width:100%;text-align:center;background-color:aquamarine;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9qb2hucnViaW8vZ2l0aHViX3Byb2plY3RzL3N3YXBpLXJlYWN0L2NvbXBvbmVudHMvYWxlcnQuanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBTWtCLEFBRW9CLFdBQ08sa0JBQ1UsNEJBQzlCIiwiZmlsZSI6Ii9Vc2Vycy9qb2hucnViaW8vZ2l0aHViX3Byb2plY3RzL3N3YXBpLXJlYWN0L2NvbXBvbmVudHMvYWxlcnQuanMiLCJzb3VyY2VzQ29udGVudCI6WyJjb25zdCBBbGVydCA9ICh7IHNob3dBbGVydCwgaGFuZGxlQ2xvc2UgfSkgPT4ge1xuICByZXR1cm4gc2hvd0FsZXJ0ID8gKFxuICAgIDxkaXYgY2xhc3NOYW1lPVwiYWxlcnRcIj5cbiAgICAgIDxkaXYgb25DbGljaz17aGFuZGxlQ2xvc2V9PlxuICAgICAgICA8cD5UaGlzIGZpbG0gaW4gbm93IEZhdm91cml0ZWQ8L3A+XG4gICAgICA8L2Rpdj5cbiAgICAgIDxzdHlsZSBqc3g+e2BcbiAgICAgICAgd2lkdGg6IDEwMCU7XG4gICAgICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogYXF1YW1hcmluZTtcbiAgICAgIGB9PC9zdHlsZT5cbiAgICA8L2Rpdj5cbiAgKSA6IG51bGw7XG59O1xuXG5leHBvcnQgZGVmYXVsdCBBbGVydDtcbiJdfQ== */\n/*@ sourceURL=/Users/johnrubio/github_projects/swapi-react/components/alert.js */")) : null;
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Alert);
+
+/***/ }),
+
 /***/ "./components/list.js":
 /*!****************************!*\
   !*** ./components/list.js ***!
@@ -115,7 +169,6 @@ const favClick = id => {
   const storedFavs = JSON.parse(localStorage.getItem("favs")) || [];
   storedFavs.push(id);
   localStorage.setItem("favs", _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0___default()(storedFavs));
-  alert("favourited");
 };
 
 const unFavClick = id => {
@@ -123,13 +176,13 @@ const unFavClick = id => {
   const index = storedFavs.indexOf(id);
   storedFavs.splice(index, 1);
   localStorage.setItem("favs", _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0___default()(storedFavs));
-  alert("unfavourited");
 };
 
 const List = ({
   films,
   favs,
-  handleClick
+  handleClick,
+  showAlert
 }) => {
   const list = films.map(film => {
     if (favs.indexOf(film.episode_id) >= 0) {
@@ -138,7 +191,7 @@ const List = ({
         className: "fav",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 20
+          lineNumber: 18
         },
         __self: undefined
       }, film.title, " -", " ", __jsx("button", {
@@ -148,7 +201,7 @@ const List = ({
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 22
+          lineNumber: 20
         },
         __self: undefined
       }, "unFav"));
@@ -158,17 +211,18 @@ const List = ({
         className: "nonfav",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 34
+          lineNumber: 32
         },
         __self: undefined
       }, film.title, " -", " ", __jsx("button", {
         onClick: () => {
           favClick(film.episode_id);
+          showAlert();
           handleClick();
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 36
+          lineNumber: 34
         },
         __self: undefined
       }, "Fav"));
@@ -276,9 +330,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _components_search__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/search */ "./components/search.js");
 /* harmony import */ var _components_list__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/list */ "./components/list.js");
+/* harmony import */ var _components_alert__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/alert */ "./components/alert.js");
 var _jsxFileName = "/Users/johnrubio/github_projects/swapi-react/pages/index.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
+
 
 
 
@@ -297,51 +353,64 @@ const IndexPage = props => {
     0: toggle,
     1: setToggle
   } = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false);
+  const {
+    0: showAlert,
+    1: setShowAlert
+  } = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false);
   Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(() => {
     const storedFavs = JSON.parse(localStorage.getItem("favs"));
     setFavs(storedFavs || []);
   }, [toggle]);
-  return __jsx("div", {
-    className: "jsx-3093969014",
+  return __jsx(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, __jsx(_components_alert__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    showAlert: showAlert,
+    handleClose: () => setShowAlert(false),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 17
+      lineNumber: 20
+    },
+    __self: undefined
+  }), __jsx("div", {
+    className: "jsx-3887979593",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 21
     },
     __self: undefined
   }, __jsx(_components_search__WEBPACK_IMPORTED_MODULE_3__["default"], {
     handleSearch: filmList => setFilms(filmList),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 18
+      lineNumber: 22
     },
     __self: undefined
   }), __jsx("h1", {
-    className: "jsx-3093969014",
+    className: "jsx-3887979593",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 19
+      lineNumber: 23
     },
     __self: undefined
   }, "Star Wars Films"), __jsx("ul", {
-    className: "jsx-3093969014" + " " + "flex",
+    className: "jsx-3887979593" + " " + "flex",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 20
+      lineNumber: 24
     },
     __self: undefined
   }, __jsx(_components_list__WEBPACK_IMPORTED_MODULE_4__["default"], {
     films: films,
     favs: favs,
     handleClick: () => setToggle(!toggle),
+    showAlert: () => setShowAlert(true),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 21
+      lineNumber: 25
     },
     __self: undefined
   })), __jsx(styled_jsx_style__WEBPACK_IMPORTED_MODULE_0___default.a, {
-    id: "3093969014",
+    id: "3887979593",
     __self: undefined
-  }, ".flex{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;}.fav{-webkit-order:-1;-ms-flex-order:-1;order:-1;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9qb2hucnViaW8vZ2l0aHViX3Byb2plY3RzL3N3YXBpLXJlYWN0L3BhZ2VzL2luZGV4LmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQTJCeUIsQUFHd0IsQUFJSiw0Q0FDWCw4QkFKd0IsOEVBQ3hCIiwiZmlsZSI6Ii9Vc2Vycy9qb2hucnViaW8vZ2l0aHViX3Byb2plY3RzL3N3YXBpLXJlYWN0L3BhZ2VzL2luZGV4LmpzIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFJlYWN0LCB7IHVzZVN0YXRlLCB1c2VFZmZlY3QgfSBmcm9tIFwicmVhY3RcIjtcbmltcG9ydCBmZXRjaCBmcm9tIFwiaXNvbW9ycGhpYy11bmZldGNoXCI7XG5pbXBvcnQgU2VhcmNoIGZyb20gXCIuLi9jb21wb25lbnRzL3NlYXJjaFwiO1xuaW1wb3J0IExpc3QgZnJvbSBcIi4uL2NvbXBvbmVudHMvbGlzdFwiO1xuXG5jb25zdCBJbmRleFBhZ2UgPSBwcm9wcyA9PiB7XG4gIGNvbnN0IFtmaWxtcywgc2V0RmlsbXNdID0gdXNlU3RhdGUocHJvcHNbMF0pO1xuICBjb25zdCBbZmF2cywgc2V0RmF2c10gPSB1c2VTdGF0ZShbXSk7XG4gIGNvbnN0IFt0b2dnbGUsIHNldFRvZ2dsZV0gPSB1c2VTdGF0ZShmYWxzZSk7XG5cbiAgdXNlRWZmZWN0KCgpID0+IHtcbiAgICBjb25zdCBzdG9yZWRGYXZzID0gSlNPTi5wYXJzZShsb2NhbFN0b3JhZ2UuZ2V0SXRlbShcImZhdnNcIikpO1xuICAgIHNldEZhdnMoc3RvcmVkRmF2cyB8fCBbXSk7XG4gIH0sIFt0b2dnbGVdKTtcblxuICByZXR1cm4gKFxuICAgIDxkaXY+XG4gICAgICA8U2VhcmNoIGhhbmRsZVNlYXJjaD17ZmlsbUxpc3QgPT4gc2V0RmlsbXMoZmlsbUxpc3QpfSAvPlxuICAgICAgPGgxPlN0YXIgV2FycyBGaWxtczwvaDE+XG4gICAgICA8dWwgY2xhc3NOYW1lPVwiZmxleFwiPlxuICAgICAgICA8TGlzdFxuICAgICAgICAgIGZpbG1zPXtmaWxtc31cbiAgICAgICAgICBmYXZzPXtmYXZzfVxuICAgICAgICAgIGhhbmRsZUNsaWNrPXsoKSA9PiBzZXRUb2dnbGUoIXRvZ2dsZSl9XG4gICAgICAgIC8+XG4gICAgICA8L3VsPlxuXG4gICAgICA8c3R5bGUgZ2xvYmFsIGpzeD57YFxuICAgICAgICAuZmxleCB7XG4gICAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICAgICAgICB9XG4gICAgICAgIC5mYXYge1xuICAgICAgICAgIG9yZGVyOiAtMTtcbiAgICAgICAgfVxuICAgICAgYH08L3N0eWxlPlxuICAgIDwvZGl2PlxuICApO1xufTtcblxuSW5kZXhQYWdlLmdldEluaXRpYWxQcm9wcyA9IGFzeW5jICgpID0+IHtcbiAgY29uc3QgdXJsID0gXCJodHRwczovL3N3YXBpLmNvL2FwaS9maWxtcy9cIjtcbiAgY29uc3QgcmVzID0gYXdhaXQgZmV0Y2godXJsKTtcbiAgY29uc3QgZGF0YSA9IGF3YWl0IHJlcy5qc29uKCk7XG5cbiAgcmV0dXJuIFtkYXRhLnJlc3VsdHNdO1xufTtcblxuZXhwb3J0IGRlZmF1bHQgSW5kZXhQYWdlO1xuIl19 */\n/*@ sourceURL=/Users/johnrubio/github_projects/swapi-react/pages/index.js */"));
+  }, ".flex{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;}.fav{-webkit-order:-1;-ms-flex-order:-1;order:-1;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9qb2hucnViaW8vZ2l0aHViX3Byb2plY3RzL3N3YXBpLXJlYWN0L3BhZ2VzL2luZGV4LmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQWdDMkIsQUFHMEIsQUFJSiw0Q0FDWCw4QkFKd0IsOEVBQ3hCIiwiZmlsZSI6Ii9Vc2Vycy9qb2hucnViaW8vZ2l0aHViX3Byb2plY3RzL3N3YXBpLXJlYWN0L3BhZ2VzL2luZGV4LmpzIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFJlYWN0LCB7IHVzZVN0YXRlLCB1c2VFZmZlY3QgfSBmcm9tIFwicmVhY3RcIjtcbmltcG9ydCBmZXRjaCBmcm9tIFwiaXNvbW9ycGhpYy11bmZldGNoXCI7XG5pbXBvcnQgU2VhcmNoIGZyb20gXCIuLi9jb21wb25lbnRzL3NlYXJjaFwiO1xuaW1wb3J0IExpc3QgZnJvbSBcIi4uL2NvbXBvbmVudHMvbGlzdFwiO1xuaW1wb3J0IEFsZXJ0IGZyb20gXCIuLi9jb21wb25lbnRzL2FsZXJ0XCI7XG5cbmNvbnN0IEluZGV4UGFnZSA9IHByb3BzID0+IHtcbiAgY29uc3QgW2ZpbG1zLCBzZXRGaWxtc10gPSB1c2VTdGF0ZShwcm9wc1swXSk7XG4gIGNvbnN0IFtmYXZzLCBzZXRGYXZzXSA9IHVzZVN0YXRlKFtdKTtcbiAgY29uc3QgW3RvZ2dsZSwgc2V0VG9nZ2xlXSA9IHVzZVN0YXRlKGZhbHNlKTtcbiAgY29uc3QgW3Nob3dBbGVydCwgc2V0U2hvd0FsZXJ0XSA9IHVzZVN0YXRlKGZhbHNlKTtcblxuICB1c2VFZmZlY3QoKCkgPT4ge1xuICAgIGNvbnN0IHN0b3JlZEZhdnMgPSBKU09OLnBhcnNlKGxvY2FsU3RvcmFnZS5nZXRJdGVtKFwiZmF2c1wiKSk7XG4gICAgc2V0RmF2cyhzdG9yZWRGYXZzIHx8IFtdKTtcbiAgfSwgW3RvZ2dsZV0pO1xuXG4gIHJldHVybiAoXG4gICAgPD5cbiAgICAgIDxBbGVydCBzaG93QWxlcnQ9e3Nob3dBbGVydH0gaGFuZGxlQ2xvc2U9eygpID0+IHNldFNob3dBbGVydChmYWxzZSl9IC8+XG4gICAgICA8ZGl2PlxuICAgICAgICA8U2VhcmNoIGhhbmRsZVNlYXJjaD17ZmlsbUxpc3QgPT4gc2V0RmlsbXMoZmlsbUxpc3QpfSAvPlxuICAgICAgICA8aDE+U3RhciBXYXJzIEZpbG1zPC9oMT5cbiAgICAgICAgPHVsIGNsYXNzTmFtZT1cImZsZXhcIj5cbiAgICAgICAgICA8TGlzdFxuICAgICAgICAgICAgZmlsbXM9e2ZpbG1zfVxuICAgICAgICAgICAgZmF2cz17ZmF2c31cbiAgICAgICAgICAgIGhhbmRsZUNsaWNrPXsoKSA9PiBzZXRUb2dnbGUoIXRvZ2dsZSl9XG4gICAgICAgICAgICBzaG93QWxlcnQ9eygpID0+IHNldFNob3dBbGVydCh0cnVlKX1cbiAgICAgICAgICAvPlxuICAgICAgICA8L3VsPlxuXG4gICAgICAgIDxzdHlsZSBnbG9iYWwganN4PntgXG4gICAgICAgICAgLmZsZXgge1xuICAgICAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgICAgIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gICAgICAgICAgfVxuICAgICAgICAgIC5mYXYge1xuICAgICAgICAgICAgb3JkZXI6IC0xO1xuICAgICAgICAgIH1cbiAgICAgICAgYH08L3N0eWxlPlxuICAgICAgPC9kaXY+XG4gICAgPC8+XG4gICk7XG59O1xuXG5JbmRleFBhZ2UuZ2V0SW5pdGlhbFByb3BzID0gYXN5bmMgKCkgPT4ge1xuICBjb25zdCB1cmwgPSBcImh0dHBzOi8vc3dhcGkuY28vYXBpL2ZpbG1zL1wiO1xuICBjb25zdCByZXMgPSBhd2FpdCBmZXRjaCh1cmwpO1xuICBjb25zdCBkYXRhID0gYXdhaXQgcmVzLmpzb24oKTtcblxuICByZXR1cm4gW2RhdGEucmVzdWx0c107XG59O1xuXG5leHBvcnQgZGVmYXVsdCBJbmRleFBhZ2U7XG4iXX0= */\n/*@ sourceURL=/Users/johnrubio/github_projects/swapi-react/pages/index.js */")));
 };
 
 IndexPage.getInitialProps = async () => {
