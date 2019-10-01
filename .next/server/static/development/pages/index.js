@@ -268,14 +268,17 @@ module.exports = __webpack_require__(/*! core-js/library/fn/json/stringify */ "c
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! isomorphic-unfetch */ "isomorphic-unfetch");
-/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _components_search__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/search */ "./components/search.js");
-/* harmony import */ var _components_list__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/list */ "./components/list.js");
+/* harmony import */ var styled_jsx_style__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-jsx/style */ "styled-jsx/style");
+/* harmony import */ var styled_jsx_style__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(styled_jsx_style__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! isomorphic-unfetch */ "isomorphic-unfetch");
+/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _components_search__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/search */ "./components/search.js");
+/* harmony import */ var _components_list__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/list */ "./components/list.js");
 var _jsxFileName = "/Users/johnrubio/github_projects/swapi-react/pages/index.js";
-var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
 
 
@@ -285,60 +288,65 @@ const IndexPage = props => {
   const {
     0: films,
     1: setFilms
-  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(props[0]);
+  } = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(props[0]);
   const {
     0: favs,
     1: setFavs
-  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]);
+  } = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])([]);
   const {
     0: toggle,
     1: setToggle
-  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false);
-  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+  } = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false);
+  Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(() => {
     const storedFavs = JSON.parse(localStorage.getItem("favs"));
     setFavs(storedFavs || []);
-    console.log("useEffect run");
   }, [toggle]);
   return __jsx("div", {
+    className: "jsx-3093969014",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 17
+    },
+    __self: undefined
+  }, __jsx(_components_search__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    handleSearch: filmList => setFilms(filmList),
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 18
+    },
+    __self: undefined
+  }), __jsx("h1", {
+    className: "jsx-3093969014",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 19
     },
     __self: undefined
-  }, __jsx(_components_search__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    handleSearch: filmList => setFilms(filmList),
+  }, "Star Wars Films"), __jsx("ul", {
+    className: "jsx-3093969014" + " " + "flex",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 20
     },
     __self: undefined
-  }), __jsx("h1", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 21
-    },
-    __self: undefined
-  }, "Star Wars Films"), __jsx("ul", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 22
-    },
-    __self: undefined
-  }, __jsx(_components_list__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  }, __jsx(_components_list__WEBPACK_IMPORTED_MODULE_4__["default"], {
     films: films,
     favs: favs,
     handleClick: () => setToggle(!toggle),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 23
+      lineNumber: 21
     },
     __self: undefined
-  })));
+  })), __jsx(styled_jsx_style__WEBPACK_IMPORTED_MODULE_0___default.a, {
+    id: "3093969014",
+    __self: undefined
+  }, ".flex{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;}.fav{-webkit-order:-1;-ms-flex-order:-1;order:-1;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9qb2hucnViaW8vZ2l0aHViX3Byb2plY3RzL3N3YXBpLXJlYWN0L3BhZ2VzL2luZGV4LmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQTJCeUIsQUFHd0IsQUFJSiw0Q0FDWCw4QkFKd0IsOEVBQ3hCIiwiZmlsZSI6Ii9Vc2Vycy9qb2hucnViaW8vZ2l0aHViX3Byb2plY3RzL3N3YXBpLXJlYWN0L3BhZ2VzL2luZGV4LmpzIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFJlYWN0LCB7IHVzZVN0YXRlLCB1c2VFZmZlY3QgfSBmcm9tIFwicmVhY3RcIjtcbmltcG9ydCBmZXRjaCBmcm9tIFwiaXNvbW9ycGhpYy11bmZldGNoXCI7XG5pbXBvcnQgU2VhcmNoIGZyb20gXCIuLi9jb21wb25lbnRzL3NlYXJjaFwiO1xuaW1wb3J0IExpc3QgZnJvbSBcIi4uL2NvbXBvbmVudHMvbGlzdFwiO1xuXG5jb25zdCBJbmRleFBhZ2UgPSBwcm9wcyA9PiB7XG4gIGNvbnN0IFtmaWxtcywgc2V0RmlsbXNdID0gdXNlU3RhdGUocHJvcHNbMF0pO1xuICBjb25zdCBbZmF2cywgc2V0RmF2c10gPSB1c2VTdGF0ZShbXSk7XG4gIGNvbnN0IFt0b2dnbGUsIHNldFRvZ2dsZV0gPSB1c2VTdGF0ZShmYWxzZSk7XG5cbiAgdXNlRWZmZWN0KCgpID0+IHtcbiAgICBjb25zdCBzdG9yZWRGYXZzID0gSlNPTi5wYXJzZShsb2NhbFN0b3JhZ2UuZ2V0SXRlbShcImZhdnNcIikpO1xuICAgIHNldEZhdnMoc3RvcmVkRmF2cyB8fCBbXSk7XG4gIH0sIFt0b2dnbGVdKTtcblxuICByZXR1cm4gKFxuICAgIDxkaXY+XG4gICAgICA8U2VhcmNoIGhhbmRsZVNlYXJjaD17ZmlsbUxpc3QgPT4gc2V0RmlsbXMoZmlsbUxpc3QpfSAvPlxuICAgICAgPGgxPlN0YXIgV2FycyBGaWxtczwvaDE+XG4gICAgICA8dWwgY2xhc3NOYW1lPVwiZmxleFwiPlxuICAgICAgICA8TGlzdFxuICAgICAgICAgIGZpbG1zPXtmaWxtc31cbiAgICAgICAgICBmYXZzPXtmYXZzfVxuICAgICAgICAgIGhhbmRsZUNsaWNrPXsoKSA9PiBzZXRUb2dnbGUoIXRvZ2dsZSl9XG4gICAgICAgIC8+XG4gICAgICA8L3VsPlxuXG4gICAgICA8c3R5bGUgZ2xvYmFsIGpzeD57YFxuICAgICAgICAuZmxleCB7XG4gICAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICAgICAgICB9XG4gICAgICAgIC5mYXYge1xuICAgICAgICAgIG9yZGVyOiAtMTtcbiAgICAgICAgfVxuICAgICAgYH08L3N0eWxlPlxuICAgIDwvZGl2PlxuICApO1xufTtcblxuSW5kZXhQYWdlLmdldEluaXRpYWxQcm9wcyA9IGFzeW5jICgpID0+IHtcbiAgY29uc3QgdXJsID0gXCJodHRwczovL3N3YXBpLmNvL2FwaS9maWxtcy9cIjtcbiAgY29uc3QgcmVzID0gYXdhaXQgZmV0Y2godXJsKTtcbiAgY29uc3QgZGF0YSA9IGF3YWl0IHJlcy5qc29uKCk7XG5cbiAgcmV0dXJuIFtkYXRhLnJlc3VsdHNdO1xufTtcblxuZXhwb3J0IGRlZmF1bHQgSW5kZXhQYWdlO1xuIl19 */\n/*@ sourceURL=/Users/johnrubio/github_projects/swapi-react/pages/index.js */"));
 };
 
 IndexPage.getInitialProps = async () => {
   const url = "https://swapi.co/api/films/";
-  const res = await isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_1___default()(url);
+  const res = await isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_2___default()(url);
   const data = await res.json();
   return [data.results];
 };
@@ -389,6 +397,17 @@ module.exports = require("isomorphic-unfetch");
 /***/ (function(module, exports) {
 
 module.exports = require("react");
+
+/***/ }),
+
+/***/ "styled-jsx/style":
+/*!***********************************!*\
+  !*** external "styled-jsx/style" ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("styled-jsx/style");
 
 /***/ })
 
