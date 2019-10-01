@@ -107,31 +107,36 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! isomorphic-unfetch */ "isomorphic-unfetch");
 /* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_1__);
 var _jsxFileName = "/Users/johnrubio/github_projects/swapi-react/pages/index.js";
-
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
-const IndexPage = () => __jsx("div", {
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 4
-  },
-  __self: undefined
-}, __jsx("h1", {
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 5
-  },
-  __self: undefined
-}, "The Main Page"));
+
+const IndexPage = props => {
+  const {
+    0: films
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(props[0]);
+  console.log(films);
+  return __jsx("div", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 9
+    },
+    __self: undefined
+  }, __jsx("h1", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 10
+    },
+    __self: undefined
+  }, "The Main Page"));
+};
 
 IndexPage.getInitialProps = async () => {
   const url = "https://swapi.co/api/films/";
   const res = await isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_1___default()(url);
   const data = await res.json();
   console.log(data);
-  return {//   shows: data.map(entry => entry.show)
-  };
+  return [data.results];
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (IndexPage);

@@ -1,10 +1,17 @@
+import React, { useState } from "react";
 import fetch from "isomorphic-unfetch";
 
-const IndexPage = () => (
-  <div>
-    <h1>The Main Page</h1>
-  </div>
-);
+const IndexPage = props => {
+  const [films] = useState(props[0]);
+  console.log(films);
+
+  return (
+    <div>
+      <h1>The Main Page</h1>
+      {/* <h1>{}</h1> */}
+    </div>
+  );
+};
 
 IndexPage.getInitialProps = async () => {
   const url = "https://swapi.co/api/films/";
@@ -13,9 +20,7 @@ IndexPage.getInitialProps = async () => {
 
   console.log(data);
 
-  return {
-    //   shows: data.map(entry => entry.show)
-  };
+  return [data.results];
 };
 
 export default IndexPage;

@@ -2892,21 +2892,25 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _jsxFileName = "/Users/johnrubio/github_projects/swapi-react/pages/index.js";
-
 var __jsx = react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement;
 
 
-var IndexPage = function IndexPage() {
+
+var IndexPage = function IndexPage(props) {
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_2__["useState"])(props[0]),
+      films = _useState[0];
+
+  console.log(films);
   return __jsx("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 4
+      lineNumber: 9
     },
     __self: this
   }, __jsx("h1", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 5
+      lineNumber: 10
     },
     __self: this
   }, "The Main Page"));
@@ -2934,8 +2938,7 @@ _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(f
         case 6:
           data = _context.sent;
           console.log(data);
-          return _context.abrupt("return", {//   shows: data.map(entry => entry.show)
-          });
+          return _context.abrupt("return", [data.results]);
 
         case 9:
         case "end":
