@@ -1,14 +1,21 @@
 import React, { useState } from "react";
 
-const Search = ({ films, handleSearch }) => {
+const Search = ({ handleSearch }) => {
   const [state, setState] = useState("");
+  const queryFilms = async q => {
+    const url = `https://swapi.co/api/films/?search=${q}`;
+    const res = await fetch(url);
+    const data = await res.json();
+    console.log("results", data);
+    handleSearch(data.results);
+  };
 
   return (
     <form
       onSubmit={e => {
         console.log("search", state);
         e.preventDefault();
-        // api request?();
+        queryFilms(state);
       }}
     >
       <input

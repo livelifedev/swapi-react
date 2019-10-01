@@ -109,21 +109,30 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 const Search = ({
-  films,
   handleSearch
 }) => {
   const {
     0: state,
     1: setState
   } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])("");
+
+  const queryFilms = async q => {
+    const url = `https://swapi.co/api/films/?search=${q}`;
+    const res = await fetch(url);
+    const data = await res.json();
+    console.log("results", data);
+    handleSearch(data.results);
+  };
+
   return __jsx("form", {
     onSubmit: e => {
       console.log("search", state);
-      e.preventDefault(); // api request?();
+      e.preventDefault();
+      queryFilms(state);
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 7
+      lineNumber: 14
     },
     __self: undefined
   }, __jsx("input", {
@@ -135,13 +144,13 @@ const Search = ({
     onChange: e => setState(e.target.value),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 14
+      lineNumber: 21
     },
     __self: undefined
   }), __jsx("button", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 22
+      lineNumber: 29
     },
     __self: undefined
   }, "Search"));
@@ -173,10 +182,6 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 const IndexPage = props => {
   const {
-    0: state,
-    1: setState
-  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])("");
-  const {
     0: films,
     1: setFilms
   } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(props[0]);
@@ -184,33 +189,33 @@ const IndexPage = props => {
   return __jsx("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 11
+      lineNumber: 10
     },
     __self: undefined
   }, __jsx(_components_search__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    handleSearch: () => setFilms(""),
+    handleSearch: filmList => setFilms(filmList),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 12
+      lineNumber: 11
     },
     __self: undefined
   }), __jsx("h1", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 13
+      lineNumber: 12
     },
     __self: undefined
   }, "Star Wars Films"), __jsx("ul", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 14
+      lineNumber: 13
     },
     __self: undefined
   }, films.map(film => __jsx("li", {
     key: film.episode_id,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 16
+      lineNumber: 15
     },
     __self: undefined
   }, film.title))));

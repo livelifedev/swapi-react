@@ -3,13 +3,12 @@ import fetch from "isomorphic-unfetch";
 import Search from "../components/search";
 
 const IndexPage = props => {
-  const [state, setState] = useState("");
   const [films, setFilms] = useState(props[0]);
   console.log(films);
 
   return (
     <div>
-      <Search handleSearch={() => setFilms("")} />
+      <Search handleSearch={filmList => setFilms(filmList)} />
       <h1>Star Wars Films</h1>
       <ul>
         {films.map(film => (
