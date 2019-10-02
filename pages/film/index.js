@@ -6,7 +6,14 @@ const FilmPage = props => {
 
   return (
     <>
-      <h1>Test</h1>
+      <h1>{film.title}</h1>
+      <h2>Episode {film.episode_id}</h2>
+      <p>"{film.opening_crawl}"</p>
+      <ul>
+        <li>Director: {film.director}</li>
+        <li>Producer: {film.producer}</li>
+        <li>Release Date: {film.release_date}</li>
+      </ul>
       <Link href="/">
         <a>Back home</a>
       </Link>
