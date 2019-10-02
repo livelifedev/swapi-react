@@ -1,4 +1,5 @@
 import fetch from "isomorphic-unfetch";
+// import { useRouter } from "next/router";
 import Link from "next/link";
 import Characters from "../../components/characters";
 import Vehicles from "../../components/vehicles";
@@ -14,6 +15,8 @@ const FilmPage = ({
   vehicles,
   species
 }) => {
+  // const router = useRouter();
+  // const { id } = router.query;
   return (
     <>
       <h1>{data.title}</h1>
@@ -37,9 +40,16 @@ const FilmPage = ({
 };
 
 FilmPage.getInitialProps = async ({ query }) => {
-  const { url } = query;
-  const res = await fetch(url);
-  const data = await res.json();
+  const url = `https://swapi.co/api/films/${query.id}/`;
+  const resp = await fetch(url);
+  const data = await resp.json();
+
+  if (data.detail === "Not found") {
+    const error = new Error("Page does not exist");
+    error.statusCode = 404;
+    throw error;
+    // Change to redirect instead or handle error properly
+  }
 
   const characters = await Promise.all(
     data.characters.map(async item => {

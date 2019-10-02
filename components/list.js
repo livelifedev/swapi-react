@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+const sliceFilmId = urlString => urlString.slice(-2, -1);
+
 const favClick = id => {
   const storedFavs = JSON.parse(localStorage.getItem("favs")) || [];
   storedFavs.push(id);
@@ -18,10 +20,7 @@ const List = ({ films, favs, handleClick, showAlert }) => {
     if (favs.indexOf(film.episode_id) >= 0) {
       return (
         <li key={film.episode_id} className="fav">
-          <Link
-            href={{ pathname: "/film", query: { url: film.url } }}
-            as={`/film/${film.episode_id}`}
-          >
+          <Link href={`/film/${sliceFilmId(film.url)}`}>
             <a>{film.title}</a>
           </Link>
           {" - "}
@@ -38,10 +37,7 @@ const List = ({ films, favs, handleClick, showAlert }) => {
     } else {
       return (
         <li key={film.episode_id} className="nonfav">
-          <Link
-            href={{ pathname: "/film", query: { url: film.url } }}
-            as={`/film/${film.episode_id}`}
-          >
+          <Link href={`/film/${sliceFilmId(film.url)}`}>
             <a>{film.title}</a>
           </Link>
           {" - "}
