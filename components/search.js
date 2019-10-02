@@ -42,6 +42,7 @@ const Search = ({ handleSearch }) => {
           height: 36px;
           font-size: 1rem;
           letter-spacing: 2px;
+          padding-left: 5px;
         }
         button {
           height: 40px;

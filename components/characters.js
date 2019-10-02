@@ -1,4 +1,4 @@
-import Tooltip from "../components/styles/tooltip";
+import Tooltip from "../styles/tooltip";
 
 const Characters = ({ charList }) => {
   console.log(charList);
