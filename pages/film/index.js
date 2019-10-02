@@ -6,23 +6,23 @@ import Planets from "../../components/planets";
 import Starships from "../../components/starships";
 import Species from "../../components/species";
 
-const FilmPage = props => {
-  const film = props[0];
-  const characters = props[1];
-  const planets = props[2];
-  const starships = props[3];
-  const vehicles = props[4];
-  const species = props[5];
-
+const FilmPage = ({
+  data,
+  characters,
+  planets,
+  starships,
+  vehicles,
+  species
+}) => {
   return (
     <>
-      <h1>{film.title}</h1>
-      <h2>Episode {film.episode_id}</h2>
-      <p>"{film.opening_crawl}"</p>
+      <h1>{data.title}</h1>
+      <h2>Episode {data.episode_id}</h2>
+      <p>"{data.opening_crawl}"</p>
       <ul>
-        <li>Director: {film.director}</li>
-        <li>Producer: {film.producer}</li>
-        <li>Release Date: {film.release_date}</li>
+        <li>Director: {data.director}</li>
+        <li>Producer: {data.producer}</li>
+        <li>Release Date: {data.release_date}</li>
       </ul>
       <Characters charList={characters} />
       <Planets plaList={planets} />
@@ -76,7 +76,7 @@ FilmPage.getInitialProps = async ({ query }) => {
     })
   );
 
-  return [data, characters, planets, starships, vehicles, species];
+  return { data, characters, planets, starships, vehicles, species };
 };
 
 export default FilmPage;
