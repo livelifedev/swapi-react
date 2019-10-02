@@ -1,13 +1,11 @@
-import fetch from "isomorphic-unfetch";
-
 const Characters = ({ charList }) => {
   console.log(charList);
   return (
     <>
       <h3>Characters:</h3>
       <ul>
-        {charList.map(char => {
-          return <li key={char.name}>{char.name}</li>;
+        {charList.map(item => {
+          return <li key={item.name}>{item.name}</li>;
         })}
       </ul>
     </>
