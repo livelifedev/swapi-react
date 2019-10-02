@@ -1,9 +1,8 @@
 import Tooltip from "../styles/tooltip";
 
 const Starships = ({ ssList }) => {
-  console.log(ssList);
   return (
-    <>
+    <div>
       <h3>Starships:</h3>
       <ul>
         {ssList.map(item => {
@@ -21,7 +20,7 @@ const Starships = ({ ssList }) => {
         })}
       </ul>
       <Tooltip />
-    </>
+    </div>
   );
 };
 

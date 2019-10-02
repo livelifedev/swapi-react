@@ -6,7 +6,6 @@ const Search = ({ handleSearch }) => {
     const url = `https://swapi.co/api/films/?search=${q}`;
     const res = await fetch(url);
     const data = await res.json();
-    console.log("results", data);
     handleSearch(data.results);
   };
 
@@ -14,7 +13,6 @@ const Search = ({ handleSearch }) => {
     <>
       <form
         onSubmit={e => {
-          console.log("search", state);
           e.preventDefault();
           queryFilms(state);
         }}

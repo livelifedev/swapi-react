@@ -1,9 +1,8 @@
 import Tooltip from "../styles/tooltip";
 
 const Planets = ({ plaList }) => {
-  console.log(plaList);
   return (
-    <>
+    <div>
       <h3>Planets:</h3>
       <ul>
         {plaList.map(item => {
@@ -21,7 +20,7 @@ const Planets = ({ plaList }) => {
         })}
       </ul>
       <Tooltip />
-    </>
+    </div>
   );
 };
 

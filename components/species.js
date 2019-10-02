@@ -1,9 +1,8 @@
 import Tooltip from "../styles/tooltip";
 
 const Species = ({ specList }) => {
-  console.log(specList);
   return (
-    <>
+    <div>
       <h3>Species:</h3>
       <ul>
         {specList.map(item => {
@@ -22,7 +21,7 @@ const Species = ({ specList }) => {
         })}
       </ul>
       <Tooltip />
-    </>
+    </div>
   );
 };
 

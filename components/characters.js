@@ -1,9 +1,8 @@
 import Tooltip from "../styles/tooltip";
 
 const Characters = ({ charList }) => {
-  console.log(charList);
   return (
-    <>
+    <div>
       <h3>Characters:</h3>
       <ul>
         {charList.map(item => {
@@ -21,7 +20,7 @@ const Characters = ({ charList }) => {
         })}
       </ul>
       <Tooltip />
-    </>
+    </div>
   );
 };
 

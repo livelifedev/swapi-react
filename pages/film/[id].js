@@ -1,11 +1,11 @@
 import fetch from "isomorphic-unfetch";
-// import { useRouter } from "next/router";
 import Link from "next/link";
 import Characters from "../../components/characters";
 import Vehicles from "../../components/vehicles";
 import Planets from "../../components/planets";
 import Starships from "../../components/starships";
 import Species from "../../components/species";
+import Main from "../../styles/main";
 
 const FilmPage = ({
   data,
@@ -15,26 +15,58 @@ const FilmPage = ({
   vehicles,
   species
 }) => {
-  // const router = useRouter();
-  // const { id } = router.query;
   return (
     <>
+      <Link href="/">
+        <a className="bold">Back home</a>
+      </Link>
       <h1>{data.title}</h1>
       <h2>Episode {data.episode_id}</h2>
       <p>"{data.opening_crawl}"</p>
-      <ul>
-        <li>Director: {data.director}</li>
-        <li>Producer: {data.producer}</li>
-        <li>Release Date: {data.release_date}</li>
+      <ul className="filmCrew">
+        <li>
+          <span className="bold">Director: </span>
+          {data.director}
+        </li>
+        <li>
+          <span className="bold">Producer: </span>
+          {data.producer}
+        </li>
+        <li>
+          <span className="bold">Release Date: </span>
+          {data.release_date}
+        </li>
       </ul>
-      <Characters charList={characters} />
-      <Planets plaList={planets} />
-      <Starships ssList={starships} />
-      <Vehicles vehList={vehicles} />
-      <Species specList={species} />
-      <Link href="/">
-        <a>Back home</a>
-      </Link>
+      <div className="filmDetails">
+        <Characters charList={characters} />
+        <Planets plaList={planets} />
+        <Starships ssList={starships} />
+        <Vehicles vehList={vehicles} />
+        <Species specList={species} />
+      </div>
+
+      <style jsx>{`
+        .filmCrew {
+          display: flex;
+          margin-bottom: 60px;
+        }
+        .filmCrew li {
+          margin-right: 30px;
+          letter-spacing: 0;
+          list-style: none;
+        }
+        .bold {
+          font-weight: bolder;
+        }
+        h2 {
+          text-decoration: underline;
+        }
+        .filmDetails {
+          display: flex;
+          flex-wrap: wrap;
+        }
+      `}</style>
+      <Main />
     </>
   );
 };
@@ -51,6 +83,7 @@ FilmPage.getInitialProps = async ({ query }) => {
     // Change to redirect instead or handle error properly
   }
 
+  // Need to optimize API calls, possibly make one big call and store data in state
   const characters = await Promise.all(
     data.characters.map(async item => {
       const data = await fetch(item);

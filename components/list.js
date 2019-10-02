@@ -1,19 +1,5 @@
 import Link from "next/link";
-
-const sliceFilmId = urlString => urlString.slice(-2, -1);
-
-const favClick = id => {
-  const storedFavs = JSON.parse(localStorage.getItem("favs")) || [];
-  storedFavs.push(id);
-  localStorage.setItem("favs", JSON.stringify(storedFavs));
-};
-
-const unFavClick = id => {
-  const storedFavs = JSON.parse(localStorage.getItem("favs")) || [];
-  const index = storedFavs.indexOf(id);
-  storedFavs.splice(index, 1);
-  localStorage.setItem("favs", JSON.stringify(storedFavs));
-};
+import { sliceFilmId, favClick, unFavClick } from "../components/utils";
 
 const List = ({ films, favs, handleClick, showAlert }) => {
   const list = films.map(film => {

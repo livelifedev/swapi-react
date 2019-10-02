@@ -1,9 +1,8 @@
 import Tooltip from "../styles/tooltip";
 
 const Vehicles = ({ vehList }) => {
-  console.log(vehList);
   return (
-    <>
+    <div>
       <h3>Vehicles:</h3>
       <ul>
         {vehList.map(item => {
@@ -21,7 +20,7 @@ const Vehicles = ({ vehList }) => {
         })}
       </ul>
       <Tooltip />
-    </>
+    </div>
   );
 };
 

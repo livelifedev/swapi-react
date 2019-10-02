@@ -3,7 +3,7 @@ const main = () => {
     <style global jsx>{`
       body {
         background-color: #a33327;
-        font-family: Verdana;
+        font-family: Verdana, Geneva, sans-serif;
         letter-spacing: 1px;
       }
       h1 {
@@ -13,7 +13,6 @@ const main = () => {
         text-transform: uppercase;
       }
       .main {
-        // background-color: #908080;
         display: flex;
         flex-direction: column;
         align-items: center;

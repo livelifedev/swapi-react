@@ -1,2 +1,14 @@
-WIP - react app using swapi and nextjs
-https://next-swapi.herokuapp.com/
+Deployed: https://next-swapi.herokuapp.com/
+
+This React app was created using Next.js.
+To setup:
+
+- clone repo
+- npm install
+- npm run dev
+
+Other packages used are:
+
+- isomorphic-unfetch (used to fetch data from API)
+- styled-jsx (preloaded with Next.js, styling using scoped CSS for components)
+- The Star Wars API (SWAPI) from https://swapi.co/
