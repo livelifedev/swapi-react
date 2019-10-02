@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const favClick = id => {
   const storedFavs = JSON.parse(localStorage.getItem("favs")) || [];
   storedFavs.push(id);
@@ -16,7 +18,10 @@ const List = ({ films, favs, handleClick, showAlert }) => {
     if (favs.indexOf(film.episode_id) >= 0) {
       return (
         <li key={film.episode_id} className="fav">
-          {film.title} -{" "}
+          <Link href="/film" as={`/film/${film.episode_id}`}>
+            <a>{film.title}</a>
+          </Link>
+          {" - "}
           <button
             onClick={() => {
               unFavClick(film.episode_id);
@@ -30,7 +35,10 @@ const List = ({ films, favs, handleClick, showAlert }) => {
     } else {
       return (
         <li key={film.episode_id} className="nonfav">
-          {film.title} -{" "}
+          <Link href="/film" as={`/film/${film.episode_id}`}>
+            <a>{film.title}</a>
+          </Link>
+          {" - "}
           <button
             onClick={() => {
               favClick(film.episode_id);
