@@ -3,6 +3,7 @@ import fetch from "isomorphic-unfetch";
 import Search from "../components/search";
 import List from "../components/list";
 import Alert from "../components/alert";
+import Main from "../styles/main";
 
 const IndexPage = props => {
   const [films, setFilms] = useState(props[0]);
@@ -18,9 +19,10 @@ const IndexPage = props => {
   return (
     <>
       <Alert showAlert={showAlert} handleClose={() => setShowAlert(false)} />
-      <div>
-        <Search handleSearch={filmList => setFilms(filmList)} />
+      <div className={"main"}>
         <h1>Star Wars Films</h1>
+        <Search handleSearch={filmList => setFilms(filmList)} />
+
         <ul className="flex">
           <List
             films={films}
@@ -38,8 +40,30 @@ const IndexPage = props => {
           .fav {
             order: -1;
           }
+          .nonfav,
+          .fav {
+            display: flex;
+            justify-content: space-between;
+          }
+          ul {
+            padding: 0;
+            width: 400px;
+          }
+          li {
+            list-style: none;
+            border-bottom: 1px solid #170f11;
+            margin-top: 25px;
+            padding: 0 0 4px 4px;
+          }
+          .fav button {
+            background-color: #009432;
+          }
+          .nonfav button {
+            background-color: #006266;
+          }
         `}</style>
       </div>
+      <Main />
     </>
   );
 };

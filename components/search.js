@@ -11,23 +11,51 @@ const Search = ({ handleSearch }) => {
   };
 
   return (
-    <form
-      onSubmit={e => {
-        console.log("search", state);
-        e.preventDefault();
-        queryFilms(state);
-      }}
-    >
-      <input
-        type="text"
-        name="search-bar"
-        id="search-bar"
-        placeholder="Search films..."
-        value={state}
-        onChange={e => setState(e.target.value)}
-      />
-      <button>Search</button>
-    </form>
+    <>
+      <form
+        onSubmit={e => {
+          console.log("search", state);
+          e.preventDefault();
+          queryFilms(state);
+        }}
+      >
+        <div>
+          <input
+            type="text"
+            name="search-bar"
+            id="search-bar"
+            placeholder="Search films..."
+            value={state}
+            onChange={e => setState(e.target.value)}
+          />
+          <button>Search</button>
+        </div>
+      </form>
+      <style jsx>{`
+        div {
+          height: 50px;
+          display: flex;
+          align-items: center;
+        }
+        input {
+          width: 300px;
+          height: 36px;
+          font-size: 1rem;
+          letter-spacing: 2px;
+        }
+        button {
+          height: 40px;
+          margin-left: 4px;
+          font-size: 0.8rem;
+          padding: 10px;
+          border-radius: 2px;
+          background-color: #170f11;
+          border: none;
+          color: #ffffff;
+          letter-spacing: 1px;
+        }
+      `}</style>
+    </>
   );
 };
 

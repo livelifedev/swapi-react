@@ -23,14 +23,13 @@ const List = ({ films, favs, handleClick, showAlert }) => {
           <Link href={`/film/${sliceFilmId(film.url)}`}>
             <a>{film.title}</a>
           </Link>
-          {" - "}
           <button
             onClick={() => {
               unFavClick(film.episode_id);
               handleClick();
             }}
           >
-            unFav
+            Fave
           </button>
         </li>
       );
@@ -40,7 +39,6 @@ const List = ({ films, favs, handleClick, showAlert }) => {
           <Link href={`/film/${sliceFilmId(film.url)}`}>
             <a>{film.title}</a>
           </Link>
-          {" - "}
           <button
             onClick={() => {
               favClick(film.episode_id);
@@ -48,7 +46,7 @@ const List = ({ films, favs, handleClick, showAlert }) => {
               handleClick();
             }}
           >
-            Fav
+            Non
           </button>
         </li>
       );
