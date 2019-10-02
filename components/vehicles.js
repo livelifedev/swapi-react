@@ -1,3 +1,5 @@
+import Tooltip from "../components/styles/tooltip";
+
 const Vehicles = ({ vehList }) => {
   console.log(vehList);
   return (
@@ -5,9 +7,20 @@ const Vehicles = ({ vehList }) => {
       <h3>Vehicles:</h3>
       <ul>
         {vehList.map(item => {
-          return <li key={item.name}>{item.name}</li>;
+          return (
+            <li key={item.name}>
+              <span className="tooltip">
+                {item.name}
+                <span className="tooltiptext">
+                  Model: {item.model} Crew: {item.crew} Consumables:{" "}
+                  {item.consumables}
+                </span>
+              </span>
+            </li>
+          );
         })}
       </ul>
+      <Tooltip />
     </>
   );
 };

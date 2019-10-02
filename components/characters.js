@@ -1,3 +1,5 @@
+import Tooltip from "../components/styles/tooltip";
+
 const Characters = ({ charList }) => {
   console.log(charList);
   return (
@@ -9,32 +11,16 @@ const Characters = ({ charList }) => {
             <li key={item.name}>
               <span className="tooltip">
                 {item.name}
-                <span className="tooltiptext">Tooltip text</span>
+                <span className="tooltiptext">
+                  Birth Year: {item.birth_year} Gender: {item.gender} Height:{" "}
+                  {item.height}
+                </span>
               </span>
             </li>
           );
         })}
       </ul>
-      <style jsx>{`
-        .tooltip {
-          position: relative;
-          display: inline-block;
-        }
-        .tooltip .tooltiptext {
-          visibility: hidden;
-          min-width: 120px;
-          background-color: black;
-          color: #fff;
-          text-align: center;
-          padding: 5px 0;
-          margin: -18px 0 0 -4px;
-          position: absolute;
-          z-index: 1;
-        }
-        .tooltip:hover .tooltiptext {
-          visibility: visible;
-        }
-      `}</style>
+      <Tooltip />
     </>
   );
 };

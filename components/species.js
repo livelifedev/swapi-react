@@ -1,3 +1,5 @@
+import Tooltip from "../components/styles/tooltip";
+
 const Species = ({ specList }) => {
   console.log(specList);
   return (
@@ -5,9 +7,21 @@ const Species = ({ specList }) => {
       <h3>Species:</h3>
       <ul>
         {specList.map(item => {
-          return <li key={item.name}>{item.name}</li>;
+          return (
+            <li key={item.name}>
+              <span className="tooltip">
+                {item.name}
+                <span className="tooltiptext">
+                  Classification: {item.classification} Average Height:{" "}
+                  {item.average_height} Average Lifespan:{" "}
+                  {item.average_lifespan}
+                </span>
+              </span>
+            </li>
+          );
         })}
       </ul>
+      <Tooltip />
     </>
   );
 };
