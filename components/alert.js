@@ -2,7 +2,7 @@ const Alert = ({ showAlert, handleClose }) => {
   return showAlert ? (
     <div className="alert">
       <div onClick={handleClose}>
-        <p>This film in now in your Favourites!</p>
+        <p>This film is now in your Favourites!</p>
       </div>
       <style jsx>{`
         width: 100%;
