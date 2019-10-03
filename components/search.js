@@ -30,13 +30,18 @@ const Search = ({ handleSearch }) => {
         </div>
       </form>
       <style jsx>{`
+        form {
+          width: 100%;
+        }
         div {
           height: 50px;
           display: flex;
           align-items: center;
+          justify-content: center;
         }
         input {
-          width: 300px;
+          width: 100%;
+          max-width: 300px;
           height: 36px;
           font-size: 1rem;
           letter-spacing: 2px;

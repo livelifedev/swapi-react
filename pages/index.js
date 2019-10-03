@@ -47,7 +47,8 @@ const IndexPage = props => {
           }
           ul {
             padding: 0;
-            width: 400px;
+            width: 100%;
+            max-width: 400px;
           }
           li {
             list-style: none;
