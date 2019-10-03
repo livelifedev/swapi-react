@@ -6,7 +6,7 @@ const List = ({ films, favs, handleClick, showAlert }) => {
     if (favs.indexOf(film.episode_id) >= 0) {
       return (
         <li key={film.episode_id} className="fav">
-          <Link href={`/film/${sliceFilmId(film.url)}`}>
+          <Link href="/film/[id]" as={`/film/${sliceFilmId(film.url)}`}>
             <a>{film.title}</a>
           </Link>
           <button
@@ -22,7 +22,7 @@ const List = ({ films, favs, handleClick, showAlert }) => {
     } else {
       return (
         <li key={film.episode_id} className="nonfav">
-          <Link href={`/film/${sliceFilmId(film.url)}`}>
+          <Link href="/film/[id]" as={`/film/${sliceFilmId(film.url)}`}>
             <a>{film.title}</a>
           </Link>
           <button
