@@ -61,6 +61,11 @@ const IndexPage = props => {
           .nonfav button {
             background-color: #006266;
           }
+          .fav button,
+          .nonfav button {
+            border: 1px solid gray;
+            cursor: pointer;
+          }
         `}</style>
       </div>
       <Main />

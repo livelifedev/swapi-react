@@ -45,7 +45,7 @@ const FilmPage = ({
         <Species specList={species} />
       </div>
 
-      <style jsx>{`
+      <style global jsx>{`
         .filmCrew {
           display: flex;
           margin-bottom: 60px;
@@ -64,6 +64,10 @@ const FilmPage = ({
         .filmDetails {
           display: flex;
           flex-wrap: wrap;
+        }
+        .filmDetails div {
+          margin-right: 20px;
+          width: 150px;
         }
       `}</style>
       <Main />
