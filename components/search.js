@@ -52,6 +52,10 @@ const Search = ({ handleSearch }) => {
           border: none;
           color: #ffffff;
           letter-spacing: 1px;
+          cursor: pointer;
+        }
+        button:hover {
+          background-color: red;
         }
       `}</style>
     </>
